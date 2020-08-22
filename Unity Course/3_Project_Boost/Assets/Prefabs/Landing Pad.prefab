@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4392246330813063797}
   - component: {fileID: 8625349519736900186}
   m_Layer: 0
-  m_Name: Launch Pad
-  m_TagString: Friendly
+  m_Name: Landing Pad
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
