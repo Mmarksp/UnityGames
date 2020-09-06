@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 872308602}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.04, y: 0, z: -9.73}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.01, y: 0.112, z: -5.2}
+  m_LocalScale: {x: 0.7642786, y: 0.89, z: 0.89}
   m_Children: []
   m_Father: {fileID: 6423667838946639811}
   m_RootOrder: 6
@@ -43,10 +43,10 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 34
-  m_Range: 10
-  m_SpotAngle: 29
-  m_InnerSpotAngle: 21.80208
+  m_Intensity: 20
+  m_Range: 5.2
+  m_SpotAngle: 47
+  m_InnerSpotAngle: 4
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -135,9 +135,9 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.9180854, g: 0.9433962, b: 0.742257, a: 1}
-  m_Intensity: 2
-  m_Range: 100
-  m_SpotAngle: 49
+  m_Intensity: 5
+  m_Range: 45
+  m_SpotAngle: 31.3
   m_InnerSpotAngle: 2
   m_CookieSize: 10
   m_Shadows:
@@ -180,7 +180,7 @@ Light:
   m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: NaN}
+  m_BoundingSphereOverride: {x: NaN, y: 0.09375, z: 0.16015625, w: 20}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -550,6 +550,7 @@ MonoBehaviour:
   mainEngineParticles: {fileID: 198100718193659787}
   crashParticles: {fileID: 198204746597562453}
   winParticles: {fileID: 198631064515386947}
+  collissionsAreEnabled: 1
 --- !u!1 &6423667839434591443
 GameObject:
   m_ObjectHideFlags: 0

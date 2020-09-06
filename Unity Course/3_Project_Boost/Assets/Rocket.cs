@@ -24,6 +24,8 @@ public class Rocket : MonoBehaviour
     enum State { Alive, Dying, Transcending }; //array
     State state = State.Alive;
 
+    [SerializeField] bool collissionsAreEnabled = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +41,24 @@ public class Rocket : MonoBehaviour
             RespondToThrustInput();
             RespondToRotateInput();
         }
+        if (Debug.isDebugBuild)
+        {
+            RespondToDebugKeys();
+        }
     }
+
+    void RespondToDebugKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+        if (Input.GetKey(KeyCode.C))
+        {
+            collissionsAreEnabled = !collissionsAreEnabled; //toggle
+        }
+    }
+
     private void RespondToThrustInput()
     {
         if (Input.GetKey(KeyCode.Space))
@@ -86,7 +105,7 @@ public class Rocket : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
 
-        if (state != State.Alive) { return; } //ignore collisions when dead
+        if (state != State.Alive || !collissionsAreEnabled) { return; } //ignore collisions when dead
 
         switch (collision.gameObject.tag) //reference game objects and then look at individual tags
         {
@@ -96,7 +115,7 @@ public class Rocket : MonoBehaviour
                 StartWinSequence();
                 break;
             default:
-                StartCrashSequence();
+                    StartCrashSequence();
                 break;
 
         }
@@ -117,16 +136,22 @@ public class Rocket : MonoBehaviour
         audioSource.Stop();
         audioSource.PlayOneShot(crash);
         crashParticles.Play();
-        Invoke("LoadFirstLevel", levelLoadDelay);
+        Invoke("ReloadCurrentLevel", levelLoadDelay);
     }
 
-    private void LoadFirstLevel()
+    private void ReloadCurrentLevel()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void LoadNextLevel()
     {
-        SceneManager.LoadScene(1);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex + 1;
+        if (nextSceneIndex == SceneManager.sceneCountInBuildSettings)
+        {
+            nextSceneIndex = 0;
+        } 
+        SceneManager.LoadScene(nextSceneIndex);
     }
 }
